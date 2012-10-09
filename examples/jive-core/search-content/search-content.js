@@ -6,6 +6,8 @@ function init() {
 
 // Perform a search and display the results
 function search() {
+$("#result").show();
+
        $("search-results").html("");
     gadgets.window.adjustHeight();
     var types = [];
@@ -27,8 +29,7 @@ function search() {
         if (response.error) {
             alert(response.error.message);
         }
-        else { $("#result").show();
-
+        else { 
             var html = "";
             var rows = response.data;
             $.each(rows, function(index, row) {
