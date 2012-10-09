@@ -6,8 +6,7 @@ function init() {
 
 // Perform a search and display the results
 function search() {
-    $("#result").show();
-    $("search-results").html("");
+       $("search-results").html("");
     gadgets.window.adjustHeight();
     var types = [];
     $("input:checked").each(function() {
@@ -28,7 +27,8 @@ function search() {
         if (response.error) {
             alert(response.error.message);
         }
-        else {
+        else { $("#result").show();
+
             var html = "";
             var rows = response.data;
             $.each(rows, function(index, row) {
