@@ -28,6 +28,7 @@ function search() {
             alert(response.error.message);
         }
         else {
+            $(#result).show();
             var html = "";
             var rows = response.data;
             $.each(rows, function(index, row) {
