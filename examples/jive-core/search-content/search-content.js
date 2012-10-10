@@ -34,10 +34,11 @@ $("#result").show();
             var rows = response.data;
             $.each(rows, function(index, row) {
                 html += "<tr>";
-                html += "<td>" + row.type + "</td>";
                 html += "<td><a href=" + row.resources.html.ref + ">"+row.subject+"</a></td>";
-                html += "<td>" + row.modificationDate + "</td>";
-                html += "<td>" + row.subject + "</td>";
+                html += "<td>" + row.author.avatarURL + "</td>";
+                html += "<td>" + row.type + "</td>";
+                               html += "<td>" + row.modificationDate + "</td>";
+               
                 html += "</tr>";
             });
             $("#search-results").html(html);
