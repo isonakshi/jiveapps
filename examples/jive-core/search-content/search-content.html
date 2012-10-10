@@ -1,8 +1,22 @@
 <script type="text/javascript" src="search-content.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-
+<style>
+.searchform 
+{ 
+font-family: Verdana; 
+font-size: 8pt; 
+background-color: #EEEEEE; 
+border-top: 2px solid #AAAAAA; 
+border-bottom: 2px solid #AAAAAA;
+padding-left: 15px; 
+padding-top: 10px; 
+padding-bottom: 0px; 
+display: block;
+width: 200px;
+} 
+</style>
 <h3>Search Criteria</h3>
-
+<form class="searchform">
 <table border="0" padding="2px">
     <tr>
         <th align="right">Include Comments?</th>
@@ -68,4 +82,5 @@
     </thead>
     <tbody id="search-results"></tbody>
 </table>
+</form>
 
