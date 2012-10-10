@@ -35,7 +35,7 @@ $("#result").show();
             $.each(rows, function(index, row) {
                 html += "<tr>";
                 html += "<td>" + row.type + "</td>";
-                html += "<td><a href=" + row.resources.html.ref + ">Location</a></td>";
+                html += "<td><a href=" + row.resources.html.ref + ">"+row.subject+"</a></td>";
                 html += "<td>" + row.modificationDate + "</td>";
                 html += "<td>" + row.subject + "</td>";
                 html += "</tr>";
