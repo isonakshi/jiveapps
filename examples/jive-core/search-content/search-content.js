@@ -35,8 +35,8 @@ $("#result").show();
             $.each(rows, function(index, row) {
                 html += "<tr>";
                 html += "<td><a href=" + row.resources.html.ref + ">"+row.subject+"</a></td>";
-                html += "<td><img  src=" + row.author.avatarURL + "/></td>";
-html+="<td>"+row.author.name+"<td>";
+               
+html+="<td><a href="https://apps-onprem.jivesoftware.com/people/"+row.author.id">+row.author.name+"</a><td>";
                 html += "<td>" + row.modificationDate + "</td>";
                 html += "<td>" + row.type + "</td>";
 
