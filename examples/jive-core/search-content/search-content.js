@@ -43,7 +43,7 @@ $("#result").show();
             $("#search-results").html(html);
             gadgets.window.adjustHeight();
         }
-    });
+    });console.log("response:",html);
 }
 
 // Register our on-view-load handler
