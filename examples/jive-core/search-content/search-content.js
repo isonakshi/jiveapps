@@ -36,7 +36,7 @@ $("#result").show();
                 html += "<tr>";
                 html += "<td><a href=" + row.resources.html.ref + ">"+row.subject+"</a></td>";
                 html += "<td><img  src=" + row.author.avatarURL + "width="30" height="30"/></td>";
-html+="<td>+row.author.name+"<td>";
+html+="<td>"+row.author.name+"<td>";
                 html += "<td>" + row.modificationDate + "</td>";
                 html += "<td>" + row.type + "</td>";
 
