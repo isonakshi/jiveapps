@@ -36,7 +36,7 @@ $("#result").show();
                 html += "<tr>";
                 html += "<td><a href=" + row.resources.html.ref + ">"+row.subject+"</a></td>";
                
-html+="<td><a href="https://apps-onprem.jivesoftware.com/people/"+row.author.id+">"+row.author.name+"</a><td>";
+html+="<td><a href="apps-onprem.jivesoftware.com/people/"+row.author.id+">"+row.author.name+"</a><td>";
                 html += "<td>" + row.modificationDate + "</td>";
                 html += "<td>" + row.type + "</td>";
 
