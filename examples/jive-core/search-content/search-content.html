@@ -5,37 +5,43 @@
 { 
 font-family: Verdana; 
 font-size: 8pt; 
-background-color: #EEEEEE; 
+font-color:#0A5826;
+background-color: #ffffff; 
 border-top: 2px solid #AAAAAA; 
 border-bottom: 2px solid #AAAAAA;
 padding-left: 15px; 
 padding-top: 10px; 
 padding-bottom: 0px; 
 display: block;
-width: 200px;
+
 } 
 </style>
 <h3>Search Criteria</h3>
 <form class="searchform">
 <table border="0" padding="2px">
+<tr>
+        <th align="right">Search:</th>
+        <td><input type="text" id="query"/></td>
+    </tr>
+
     <tr>
-        <th align="right">Include Comments?</th>
+        <th align="right">Include Only Comments?</th>
         <td><input type="checkbox" checked="checked" id="comment"/></td>
     </tr>
     <tr>
-        <th align="right">Include Discussions?</th>
+        <th align="right">Include Only Discussions?</th>
         <td><input type="checkbox" checked="checked" id="discussion"/></td>
     </tr>
     <tr>
-        <th align="right">Include Documents?</th>
+        <th align="right">Include Only Documents?</th>
         <td><input type="checkbox" checked="checked" id="document"/></td>
     </tr>
     <tr>
-        <th align="right">Include Messages?</th>
+        <th align="right">Include Only Messages?</th>
         <td><input type="checkbox" checked="checked" id="message"/></td>
     </tr>
     <tr>
-        <th align="right">Include Posts?</th>
+        <th align="right">Include Only Posts?</th>
         <td><input type="checkbox" checked="checked" id="post"/></td>
     </tr>
     <tr>
@@ -61,11 +67,7 @@ width: 200px;
             </select>
         </td>
     </tr>
-    <tr>
-        <th align="right">Query String:</th>
-        <td><input type="text" id="query"/></td>
-    </tr>
-    <tr>
+        <tr>
         <th>&nbsp;</th>
         <td><button id="search">Search</button></td>
     </tr>
