@@ -35,11 +35,9 @@ $("#result").show();
             $.each(rows, function(index, row) {
                 html += "<tr>";
                 html += "<td><a href=" + row.resources.html.ref + ">"+row.subject+"</a></td>";
-                html+="<td>"+row.author.name+"<td>";
-                html += "<td>" + row.modificationDate + "</td>";
+                html +="<td>"+row.author.name+"<td>";
+                html += "<td>"+ row.modificationDate+"</td>";
                 html += "<td>" + row.type + "</td>";
-
-               
                 html += "</tr>";
             });
             $("#search-results").html(html);
