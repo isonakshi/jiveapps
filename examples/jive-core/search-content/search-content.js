@@ -9,7 +9,7 @@ function init() {
 
 // Perform a search and display the results
 function search() {
-$("#search-results").show();
+
 $("#results").show();
        $("search-results").html("");
     gadgets.window.adjustHeight();
