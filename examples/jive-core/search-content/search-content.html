@@ -1,7 +1,5 @@
 <script type="text/javascript" src="search-content.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />    
-<script src="http://code.jquery.com/jquery-1.8.2.js"></script>    
+    
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 <style>
 .searchform 
@@ -22,16 +20,22 @@ display: block;
 #search-results li{
 display:inline;
 }
-
+.summary ul{
+font-style:oblique; 
+color:grey; 
+font-size:10px;
+}
 
 </style>
 
 <center>
-<input type="text" id="query" padding="20px" size="50"><br>
+<div padding="20px">
+<input type="text" id="query" size="50"><br>
 <button id="search">Search</button>
 
-</center>
 
+</center>
+</div>
 <div id="results" style="display:none">
 <h3> Search Results </h3>
 <table border="0" padding="2px" class="searchform">
@@ -60,5 +64,3 @@ display:inline;
                <div id="search-results" style="display:none">
 
 </div>
-
-
