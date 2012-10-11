@@ -35,12 +35,12 @@ $("#result").show();
             var html = "";
             var rows = response.data;
             $.each(rows, function(index, row) {
-                html += "<tr>";
-                html += "<td><a href=" + row.resources.html.ref + ">"+row.subject+"</a></td>";
-                html +="<td>"+row.author.name+"</td>";
-                html += "<td>"+ row.modificationDate+"</td>";
-                html += "<td>" + row.type + "</td>";
-                html += "</tr>";
+                html += "<ul>";
+                html += "<li><a href=" + row.resources.html.ref + ">"+row.subject+"</a><ul>"+row.contentSummary+"</ul></li>";
+                html +="<li>"+row.author.name+"</li>";
+                html += "<li>"+ row.modificationDate+"</li>";
+                html += "<li>" + row.type + "</li>";
+                html += "</ul>";
             });
             $("#search-results").html(html);
             gadgets.window.adjustHeight();
