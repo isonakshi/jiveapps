@@ -8,7 +8,7 @@ function init() {
 
 // Perform a search and display the results
 function search() {
-$("#result").show();
+$("#search-results").show();
 
        $("search-results").html("");
     gadgets.window.adjustHeight();
