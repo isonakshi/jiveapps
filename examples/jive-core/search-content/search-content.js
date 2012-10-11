@@ -1,6 +1,12 @@
 // On-view-load initialization
 function init() {
-    $("#search").click(search);
+
+     
+var suggestions = response.data.subject;       
+ $( "#query" ).autocomplete({            
+source: suggestions
+        });
+      $("#search").click(search);
     gadgets.window.adjustHeight();
 }
 
