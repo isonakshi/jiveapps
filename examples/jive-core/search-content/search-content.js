@@ -22,7 +22,7 @@ $("#result").show();
     };
     if (types.length > 0) {
         params.type = types;
-    }
+    }             
     console.log("searching for " + JSON.stringify(params));
     osapi.jive.core.searches.searchContent(params).execute(function(response) {
         console.log("searching response is " + JSON.stringify(response));
