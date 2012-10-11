@@ -37,7 +37,10 @@ $("#search-results").show();
             var rows = response.data;
             $.each(rows, function(index, row) {
                 html += "<ul>";
-                html += "<li><a href=" + row.resources.html.ref + ">"+row.subject+"</a><ul><li>"+row.contentSummary+"</li></ul></li>";
+                html += "<li><a href=" + row.resources.html.ref + ">"+row.subject+"</a></li>";
+                html += "</ul>";
+                html += "<ul class="summary">"+row.contentSummary+"</ul>";
+                html += "<ul>";
                 html +="<li>"+row.author.name+"</li>";
                 html += "<li>"+ row.modificationDate+"</li>";
                 html += "<li>" + row.type + "</li>";
