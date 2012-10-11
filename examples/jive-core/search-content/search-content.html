@@ -3,14 +3,6 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />    
 <script src="http://code.jquery.com/jquery-1.8.2.js"></script>    
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-<script>
-$(function() {        
-var suggestions = response.data.subject;       
- $( "#query" ).autocomplete({            
-source: suggestions
-        });
-    });    
-</script>
 <style>
 .searchform 
 { 
@@ -35,7 +27,8 @@ display: block;
         <td><input type="text" id="query"/></td>
     </tr>
 
-    <tr>
+//Filters for getting results
+   <!-- <tr>
         <th align="right">Include Only Comments?</th>
         <td><input type="checkbox" id="comment"/></td>
     </tr>
@@ -55,11 +48,11 @@ display: block;
         <th align="right">Include Only Posts ?</th>
         <td><input type="checkbox" id="post"/></td>
     </tr>
-   <!-- <tr>
+   <tr>
         <th align="right">Maximum Results:</th>
         <td><input type="text" id="limit" value="25"></td>
     </tr>
-    <tr>
+    <tr>-->
         <th align="right">Sort Order:</th>
         <td>
             <select id="sort-order">
@@ -67,7 +60,7 @@ display: block;
                 <option value="ascending">ascending</option>
             </select>
         </td>
-    </tr>-->
+    </tr>
     <tr>
         <th align="right">Sort Type:</th>
         <td>
