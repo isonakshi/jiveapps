@@ -2,10 +2,6 @@
 function init() {
 
      
-var suggestions = response.data.subject;       
- $( "#query" ).autocomplete({            
-source: suggestions
-        });
       $("#search").click(search);
     gadgets.window.adjustHeight();
 }
