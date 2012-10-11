@@ -11,7 +11,8 @@ function init() {
 function search() {
 
 $("#results").show();
-       $("search-results").html("");
+$("#search-results").show();
+       $("#search-results").html("");
     gadgets.window.adjustHeight();
     var types = [];
     $("input:checked").each(function() {
