@@ -25,7 +25,7 @@ timediff -= mins * (1000 * 60);
 mins = mins - 30; //IST correction
 var secs = Math.floor(timediff / 1000); 
 timediff -= secs * 1000;
-var dtfmtDate = days +":" + hours +":"+mins +":"+secs
+var dtfmtDate = days +":" + hours +":"+mins +":"+secs;
 if (days > 0)
 {
 if (days == 1)
@@ -98,7 +98,8 @@ $("#search-results").show();
                 html += "<ul>";
                 html += "<li><a href=" + row.resources.html.ref + ">"+row.subject+"</a></li>";
                 html += "</ul>";
-                html += "<ul"+row.contentSummary+"></ul>";
+                html += "<style> ul { font-style:oblique; color:grey; font-size:10px; }</style>";
+                html += "<ul>"+row.contentSummary+"</ul>";
                 html += "<ul>";
                 html +="<li>"+row.author.name+"</li>";
                 html += "<li>"+ dtfmtDate+"</li>";
