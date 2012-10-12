@@ -40,7 +40,7 @@ $("#search-results").show();
                 html += "<ul>";
                 html += "<li><a href=" + row.resources.html.ref + ">"+row.subject+"</a></li>";
                 html += "</ul>";
-                html += "<ul style='font-style:oblique; color:grey; font-size:10px;'>"+row.contentSummary+"</ul>";
+                html += "<ul>"+row.contentSummary+"</ul>";
                 html += "<ul>";
                 html +="<li>"+row.author.name+"</li>";
                 html += "<li>"+ row.modificationDate+"</li>";
