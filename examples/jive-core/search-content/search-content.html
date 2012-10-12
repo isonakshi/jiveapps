@@ -1,88 +1,209 @@
-<script type="text/javascript" src="search-content.js"></script>
-    
-<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 <style>
-.searchform 
-{ 
-font-family: Verdana; 
-font-size: 8pt; 
-font-color:#0A5826;
-background-color: #ffffff; 
-border-top: 2px solid #AAAAAA; 
-border-bottom: 2px solid #AAAAAA;
-padding-left: 15px; 
-padding-top: 10px; 
-padding-bottom: 0px; 
-display: block;
+  #advsearch_text {
+        text-align: left;
+        -moz-border-radius: 6px;
+        background: #eef2f7;
+        -webkit-border-radius: 6px;
+        border: 1px solid #536376;
+        -webkit-box-shadow: rgba(0,0,0,.6) 0px 2px 12px;
+        -moz-box-shadow:  rgba(0,0,0,.6) 0px 2px 12px;;
+        padding: 14px 22px;
+        width: 400px;
+        position: relative;
+        display: none;
+  }
 
-} 
-
-#search-results li{
-display:inline;
+ #search_examples {
+		background: #FFFFFF;
+		border: 1px solid #536376;
+		padding: 5px;
+ }
+	
+table#advSearch {
+ width:98%;
 }
-.summary ul{
-font-style:oblique; 
-color:grey; 
-font-size:10px;
-}
 
+table#advSearch td {
+    padding: 7px 5px;
+    border-bottom: 1px solid #c3ccd8;
+}
 
 </style>
-<div style="padding:20px;" align="center">
-<input type="text" id="query" size="50"><br><br>
-<button id="search">Search</button>
 
-<table border="0" padding="2px" class="searchform">
-        <th align="right">Sort Order:</th>
-        <td>
-            <select id="sort-order">
-                <option value="descending">descending</option>
-                <option value="ascending">ascending</option>
-            </select>
-        </td>
-   
-        <th align="right">Sort Type:</th>
-        <td>
-            <select id="sort-type">
-                <option value="relevance">Relevance</option>
-                <option value="date">Last Modification</option>
-                <option value="subject">Subject</option>
-            </select>
-        </td>
-    </tr>
-       </table>
+	
+<script type="text/javascript" charset="utf-8">
+
+// modify the container and container type variables here
+// ContainerType should be Group = 700 or Project = 600 or community = 14
+// container is the ID of your space, group, project
+var search_container = '2079';
+var search_containerType = '14';
 
 
-</div>
-<form id="ajaxquery" action="" method="post">
+		// jQuery function to launch the lightbox
+        $j(function() {
+            function launch() {
+                 $j('#advsearch_text').lightbox_me({
+				 centered: true, 
+				 onLoad: function() { }
+				 });
+            }
+            
+            $j('#advsearch').click(function() {
+                $j("#loader").lightbox_me({
+				centered: true});
+                setTimeout(launch, 1000);
+                return false;
+            });
+            
+            
+            
+        });
 
 
+// Function to add the container global variables to the form upon submission
+function assignContainers() {
+	document.getElementById('jive-container-chooser-type-advanced').value = search_containerType;
+	document.getElementById('jive-container-chooser-id-advanced').value = search_container;
+	document.getElementById('jive-container-chooser-type').value = search_containerType;
+	document.getElementById('jive-container-chooser-id').value = search_container;
+}
 
-                    <input class="text-field" name="q" type="text" />
-                    <input type="hidden" name="container" value="https://apps-onprem.jivesoftware.com/groups/t-group" />
-                    <input type="hidden" name="containerType" value="14" />
+// Trims whitespace on either side of the search term
+function trimText(texttotrim) {
+	return texttotrim.replace(/^\s+|\s+$/g,"");
+}
 
-                    <input type="hidden" name="resultTypes" value="blogpost" />
-                    <input class="submit-btn" type="submit" value="Search">
-                </form>
-<div id="success"></div> 
+// Replaces characters for proper Lucene formatting
+function replaceAllSpaces(thetext,findtext,replacetext) {
+	return thetext.split(findtext).join(replacetext);
+}
 
-<script type="text/javascript">
-$("#ajaxquery").live( "submit" , function(){ 
-    // Intercept the form submission 
-    var formdata = $(this).serialize(); // Serialize all form data 
- 
-    // Post data to your PHP processing script 
-    $.post( "/search.jspa", formdata, function( data ) { 
-        // Act upon the data returned, setting it to #success <div> 
-        $("#success").html ( data ); 
-    }); 
- 
-    return false; // Prevent the form from actually submitting 
-}); 
+// Add parentheses to each of the search fields to allow for bundling them together
+function addParen(searchTerm) {
+	return '(' + searchTerm + ')';
+}
+
+// Takes the advanced search fields and begins processing
+function combineFields() {
+	var combinedSearch = "";
+	var allwords = document.getElementById('all_fields').value;
+	var anywords = document.getElementById('any_fields').value;
+	var exactwords = document.getElementById('exact_fields').value;
+	var nonewords = document.getElementById('none_fields').value;
+	var tagwords = document.getElementById('tag_fields').value;
+
+	allwords = trimText(allwords);
+	anywords = trimText(anywords);
+	exactwords = trimText(exactwords);
+	nonewords = trimText(nonewords);
+	tagwords = trimText(tagwords);
+
+	if(allwords != "") {
+		allwords = replaceAllSpaces(allwords,' ',' AND ');
+		allwords = addParen(allwords);
+	}
+
+	if(anywords != "") {
+		anywords = replaceAllSpaces(anywords,' ',' OR ');
+		anywords = addParen(anywords);
+	}
+
+	if(exactwords != "") {
+		exactwords = '"' + exactwords + '"';
+		exactwords = addParen(exactwords);
+	}
+
+	if(nonewords != "") {
+		nonewords = ' NOT ' + nonewords;
+	}
+
+	if(tagwords != "") {
+		tagwords = 'tags:' + tagwords;
+		tagwords = addParen(tagwords);
+	}
+
+
+	combinedSearch = allwords + anywords + exactwords + nonewords + tagwords;
+
+	if(combinedSearch == "") {
+		var errorel = document.getElementById('modal_error');
+		errorel.style.display = '';	
+		errorel.innerHTML = '<div><span class="jive-icon-med jive-icon-redalert"></span>Please enter at least one search term</div>';
+		return false;
+	} else {
+
+		if(document.searchformadvanced.search_all.checked == true){
+			document.getElementById('jive-container-chooser-type-advanced').value = "";
+			document.getElementById('jive-container-chooser-id-advanced').value = "";
+		}
+
+		document.getElementById('jive-search-terms-advanced').value = combinedSearch;
+		return true;
+	}
+
+
+}
+
 </script>
-               <div id="search-results" style="display:none">
-<h3> Search Results </h3>
 
+
+<div id="searchMysite">
+<form action="/search.jspa" name="searchform" method="get" onSubmit="assignContainers()";>
+<input id="jive-search-terms" maxlength="100" name="q" size="15" type="text" value=""/>
+<input type="submit" id="jive-search-button-submit" onclick="assignContainers();this.disabled=true;this.value='Searching...';this.form.submit();return false;" value="Search"/>
+<input type="hidden" id="jive-container-chooser-type" name="containerType" value=""/>
+<input type="hidden" id="jive-container-chooser-id" name="container" value=""/>
+</div>
+<br />
+<a href="#" id="advsearch" class="try sprited">Advanced Search</a> | <a href="/search-tips.jspa" target="_blank">Search Tips</a>
+
+<div id="advsearch_text" style="display:none";>
+<p style="text-align:right"><a id="close" href="#" class="close">Close</a></p>
+
+<div id="modal_error" class="jive-error-box" style="display:none";></div>
+
+
+
+<div id="searchMysiteAdvanced">
+<form action="/search.jspa" name="searchformadvanced" method="post">
+<fieldset>
+<legend>Advanced Space Search</legend>
+<table id="advSearch">
+<tr><td width="130px"><label for="all_fields">All of these words</label></td><td>
+<input id="all_fields" maxlength="100" name="all_fields" size="35" type="text" value="" />
+</td></tr>
+<tr><td><label for="any_fields">Any of these words</label></td><td>
+<input id="any_fields" maxlength="100" name="any_fields" size="35" type="text" value="" />
+</td></tr>
+<tr><td><label for="exact_fields">The exact phrase</label></td><td>
+<input id="exact_fields" maxlength="100" name="exact_fields" size="35" type="text" value="" />
+</td></tr>
+<tr><td><label for="none_fields">None of these words</label></td><td>
+<input id="none_fields" maxlength="100" name="none_fields" size="35" type="text" value="" />
+</td></tr>
+<tr><td><label for="tag_fields">Document Tags</label></td><td>
+<input id="tag_fields" maxlength="100" name="tag_fields" size="35" type="text" value="" />
+</td></tr>
+<tr><td>
+<input id="jive-search-button-submit" onclick="assignContainers();return combineFields();this.disabled=true;this.value='Searching...';this.form.submit();return false;" type="submit" value="Search" />
+</td><td>
+<input type="checkbox" id="search_all" name="search_all" value="search_all">Search entire site
+</td></tr>
+</table>
+
+<input type="hidden" id="jive-container-chooser-type-advanced" name="containerType" value="" />
+<input type="hidden" id="jive-container-chooser-id-advanced" name="container" value="" />
+<input type="hidden" id="jive-search-terms-advanced" name="q" size="15" value="" />
+</fieldset>
+</div>
+
+<div id="search_examples">
+<ul>
+<li>Use "wildcards" to search parts of words. These include ? and *</li>
+</ul>
+</div>
 
 </div>
+
+
