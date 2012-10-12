@@ -6,9 +6,9 @@ function init() {
     gadgets.window.adjustHeight();
 }
 //Date convertor
-var InputDate=response.data.modificationDate;
 function DateFormatFunc(InputDate)
 {
+var InputDate=response.data.modificationDate;
 
 
 
