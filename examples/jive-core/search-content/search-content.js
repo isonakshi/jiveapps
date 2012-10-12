@@ -6,9 +6,10 @@ function init() {
     gadgets.window.adjustHeight();
 }
 //Date convertor
-function DateFormatFunc()
-{
 var InputDate=response.data.modificationDate;
+function DateFormatFunc(InputDate)
+{
+
 
 
 var DtFmt = new Date(InputDate.substring(6,10),InputDate.substring(0,2)-1,InputDate.substring(3,5),InputDate.substring(11,13),InputDate.substring(14,16),InputDate.substring(17,19)).valueOf();
