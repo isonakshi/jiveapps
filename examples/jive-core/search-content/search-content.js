@@ -102,7 +102,7 @@ $("#search-results").show();
                 html += "<ul>"+row.contentSummary+"</ul>";
                 html += "<ul>";
                 html +="<li>"+row.author.name+"</li>";
-                html += "<li>"+ dtfmtDate+"</li>";
+                html += "<li>"+ row.modificationDate+"</li>";
                 html += "<li>" + row.type + "</li>";
                 html += "</ul>";
             });
