@@ -54,7 +54,10 @@ font-size:10px;
 
 
 </div>
-<form action="/search.jspa" method="get" target="_self">
+<form id="ajaxquery" action="" method="post">
+
+
+
                     <input class="text-field" name="q" type="text" />
                     <input type="hidden" name="container" value="https://apps-onprem.jivesoftware.com/groups/t-group" />
                     <input type="hidden" name="containerType" value="14" />
@@ -62,8 +65,21 @@ font-size:10px;
                     <input type="hidden" name="resultTypes" value="blogpost" />
                     <input class="submit-btn" type="submit" value="Search">
                 </form>
+<div id="success"></div> 
 
-
+<script type="text/javascript">
+$("#ajaxquery").live( "submit" , function(){ 
+    // Intercept the form submission 
+    var formdata = $(this).serialize(); // Serialize all form data 
+ 
+    // Post data to your PHP processing script 
+    $.post( "/search.jspa", formdata, function( data ) { 
+        // Act upon the data returned, setting it to #success <div> 
+        $("#success").html ( data ); 
+    }); 
+ 
+    return false; // Prevent the form from actually submitting 
+}); 
 
                <div id="search-results" style="display:none">
 <h3> Search Results </h3>
