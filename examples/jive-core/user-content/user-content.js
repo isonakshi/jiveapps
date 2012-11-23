@@ -13,26 +13,6 @@ var user;
 // A set of users we can select as collaborators on a private discussion
 var users = [ ];
 
-// Create a new (empty) discussion and display it.
-function createDiscussion() {
-  current = {
-    html : "",
-    subject : ""
-  };
-  console.log("createDiscussion() = " + JSON.stringify(current));
-  showNewDiscussion();
-}
-
-// Create a new (empty) document and display it.
-function createDocument() {
-  current = {
-    html : "",
-    subject : "",
-    userURI : [ "foo" ]
-  };
-  console.log("createDocument() = " + JSON.stringify(current));
-  showNewDocument();
-}
 
 // Delete current discussion
 function deleteDiscussion() {
@@ -94,7 +74,7 @@ function isHome() {
 function loadDiscussions() {
   console.log("loadDiscussions() started");
   showMessage("Loading private discussions for '" + user.name + "' ...");
-  user.privateDiscussions.get({
+  user.discussions.get({
     limit : 1000
   }).execute(function(response) {
     console.log("loadDiscussions() response = " + JSON.stringify(response));
@@ -122,7 +102,7 @@ function loadDiscussions() {
 function loadDocuments() {
   console.log("loadDocuments() started");
   showMessage("Loading private documents for '" + user.name + "' ...");
-  user.privateDocuments.get({
+  user.documents.get({
     limit : 1000
   }).execute(function(response) {
     console.log("loadDocuments() response = " + JSON.stringify(response));
