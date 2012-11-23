@@ -13,6 +13,26 @@ var user;
 // A set of users we can select as collaborators on a private discussion
 var users = [ ];
 
+// Create a new (empty) discussion and display it.
+function createDiscussion() {
+  current = {
+    html : "",
+    subject : ""
+  };
+  console.log("createDiscussion() = " + JSON.stringify(current));
+  showNewDiscussion();
+}
+
+// Create a new (empty) document and display it.
+function createDocument() {
+  current = {
+    html : "",
+    subject : "",
+    userURI : [ "foo" ]
+  };
+  console.log("createDocument() = " + JSON.stringify(current));
+  showNewDocument();
+}
 
 // Delete current discussion
 function deleteDiscussion() {
