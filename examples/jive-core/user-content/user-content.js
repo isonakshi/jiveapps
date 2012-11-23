@@ -74,7 +74,7 @@ function isHome() {
 function loadDiscussions() {
   console.log("loadDiscussions() started");
   showMessage("Loading private discussions for '" + user.name + "' ...");
-  user.discussions.get({
+  user.privateDiscussions.get({
     limit : 1000
   }).execute(function(response) {
     console.log("loadDiscussions() response = " + JSON.stringify(response));
@@ -102,7 +102,7 @@ function loadDiscussions() {
 function loadDocuments() {
   console.log("loadDocuments() started");
   showMessage("Loading private documents for '" + user.name + "' ...");
-  user.documents.get({
+  user.privateDocuments.get({
     limit : 1000
   }).execute(function(response) {
     console.log("loadDocuments() response = " + JSON.stringify(response));
