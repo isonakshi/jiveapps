@@ -6,7 +6,7 @@ function init() {
 // Perform a search and display the results
 function search() {
  
-     osapi.jive.corev3.contents.get({"author":"@self","fields": "@all"}).execute(function(response) {
+     osapi.jive.corev3.contents.get({"author.id":"2065","fields": "@all"}).execute(function(response) {
         console.log("The Response is " + JSON.stringify(response));
         
            
