@@ -5,16 +5,14 @@ function init() {
 
 // Perform a search and display the results
 function search() {
-     var request = osapi.jive.corev3.contents.get({
-    
-     "fields": "@all"
- });
-
- request.execute(function(data) {
-     console.log("Fetched the document!", data);
- });
-
-}
+ 
+     osapi.jive.corev3.contents.get({"fields": "@all"}).execute(function(response) {
+        console.log("The Response is " + JSON.stringify(response));
+        
+           
+            gadgets.window.adjustHeight();
+        });
+    }
 
 // Register our on-view-load handler
 gadgets.util.registerOnLoadHandler(init);
