@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <Module>
-    <ModulePrefs title="Search Jive Content"
-                author="Jive Software"
-           description="Exercise content search capabilities of Jive Core API."
-                height="400">
+    <ModulePrefs title="V3 Example"
+                author="Sonakshi"
+           description="Manage social groups">
+        <Link rel="Icon" href="group-icon.png"/>
         <Require feature="dynamic-height"/>
         <Require feature="jive-core-v3"/>
         <Require feature="jquery-1.4.2"/>
+        <Require feature="minimessage"/>
         <Require feature="osapi"/>
         <Require feature="views"/>
     </ModulePrefs>
-    <Content view="home" type="html" href="search-content.html"/>
-    <Content view="canvas" type="html" href="search-content.html"/>
+    <Content view="home, canvas" type="html" href="social-groups.html"/>
 </Module>
