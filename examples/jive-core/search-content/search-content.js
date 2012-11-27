@@ -11,10 +11,12 @@ function search() {
      });
         osapi.jive.corev3.people.get({id : '@me'}).execute(function(response) {
         console.log("The User is " + JSON.stringify(response));
+        var newRes=response.resources.members.get();
+        newRes.execute(function(response) {
+            console.log("Membership is"+JSON.strinify(response));
         });
-           osapi.jive.corev3.people.getMembers({id : '@me',"fields":"@all"}).execute(function(response) {
-        console.log("The person's group " + JSON.stringify(response));
-           });
+        });
+          
             gadgets.window.adjustHeight();
         
     }
