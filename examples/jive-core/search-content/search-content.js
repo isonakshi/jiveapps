@@ -11,9 +11,9 @@ function search() {
      });
         osapi.jive.corev3.people.get({id : '@me'}).execute(function(response) {
         console.log("The User is " + JSON.stringify(response));
-        var newRes=response.resources.getMembers({"fields":"@all"});
-        newRes.execute(function(response) {
-            console.log("Membership is"+JSON.strinify(response));
+            var request = response.resources.members.get();
+request.execute(function(response) {
+    console.log("The Membership is " + JSON.stringify(response));
         });
         });
           
