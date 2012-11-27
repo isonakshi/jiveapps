@@ -12,7 +12,7 @@ function search() {
         osapi.jive.corev3.people.get({id : '@me'}).execute(function(response) {
         console.log("The User is " + JSON.stringify(response));
         });
-           osapi.jive.corev3.people.Person.getMembers({"fields":"@all"}).execute(function(response) {
+           osapi.jive.corev3.people.getMembers({id : '@me',"fields":"@all"}).execute(function(response) {
         console.log("The person's group " + JSON.stringify(response));
            });
             gadgets.window.adjustHeight();
