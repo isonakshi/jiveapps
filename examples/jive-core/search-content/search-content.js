@@ -12,7 +12,7 @@ function search() {
         osapi.jive.corev3.people.get({id : '@me'}).execute(function(response) {
         console.log("The User is " + JSON.stringify(response));
         });
-            var request = osapi.jive.corev3.people.Person.getMembers();
+            var request = osapi.jive.corev3.people.getMembers({id : '@me'});
 request.execute(function(response) {
     console.log("The Membership is " + JSON.stringify(response));
        
